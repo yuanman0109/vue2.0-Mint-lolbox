@@ -109,12 +109,15 @@ export default {
       .slide img{
         max-width: 100%;
       }
+      .mint-navbar .mint-tab-item{
+          padding: 12px 0;
+      }
       .mint-navbar .mint-tab-item.is-selected{
         border-bottom: none;
         margin: 0;
         color: #d3bf8d;
-        background: url("../assets/active.png") no-repeat bottom 2px center;
-        background-size: 40px;
+        background: url("../assets/active.png") no-repeat bottom 3px center;
+        background-size: 30px;
       }
       .container{
           background: #eeeff0;

@@ -3,7 +3,7 @@
     <transition name="fade">
       <div class="loadingBox" v-if="isloading"></div>
     </transition>
-    <transition name="fade">
+    <transition name="fade-view">
       <router-view></router-view>
     </transition>
   </div>
@@ -68,10 +68,16 @@ a {
 .loadingBox img{
   max-width: 100%;
 }
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 1s
-}
-.fade-enter, .fade-leave-active {
+.fade-leave-active {
+  transition: opacity 1s;
   opacity: 0
+}
+.fade-view-enter-active, .fade-view-leave-active {
+  transition: opacity .5s;
+  position: absolute;
+}
+.fade-view-enter, .fade-view-leave-active {
+  opacity: 0;
+  position: absolute;
 }
 </style>
