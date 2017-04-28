@@ -8,14 +8,14 @@
             <News></News>
           </mt-tab-container-item>
           <mt-tab-container-item id="订单">
-            <mt-cell v-for="n in 5" :title="'订单 ' + n" />
+            <mt-cell v-for="(n,i) in 5" key="i" :title="'订单 ' + n" />
           </mt-tab-container-item>
           <mt-tab-container-item id="发现">
-            <mt-cell v-for="n in 7" :title="'发现 ' + n" />
+            <mt-cell v-for="(n,i) in 7" key="i" :title="'发现 ' + n" />
           </mt-tab-container-item>
           <mt-tab-container-item id="我的">
             <div class="page-part">
-              <mt-cell v-for="n in 12" :title="'我的 ' + n" />
+              <mt-cell v-for="(n,i) in 12" key="i" :title="'我的 ' + n" />
             </div>
             <router-link to="/">
               <mt-button type="danger" size="large">退出</mt-button>
@@ -70,7 +70,6 @@ export default {
   }
 .page-wrap {
   overflow: auto;
-  height: 100%;
   padding-bottom: 100px;
 }
 </style>

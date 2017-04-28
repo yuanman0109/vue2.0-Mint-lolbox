@@ -20,7 +20,7 @@
                            <li><img src="../assets/notice2.png" alt=""></li>
                         </ul>
                         <ul class="artlist">
-                            <li v-for="list in newsData">
+                            <li v-for="(list,index) in newsData" key="index">
                                 <router-link to="/article/1">
                                     <div>
                                         <img src="../assets/article.png" alt="artname">
@@ -36,10 +36,10 @@
                     </div>
                 </mt-tab-container-item>
                 <mt-tab-container-item id="2">
-                    <mt-cell v-for="n in 4" :title="'测试 ' + n" />
+                    <mt-cell v-for="(n,i) in 4" key="i" :title="'测试 ' + n" />
                 </mt-tab-container-item>
                 <mt-tab-container-item id="3">
-                    <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+                    <mt-cell v-for="(n,i) in 6" key="i" :title="'选项 ' + n" />
                 </mt-tab-container-item>
             </mt-tab-container>
         </div>
