@@ -192,6 +192,7 @@ a {
 }
 .sidebar .head{
   padding: 20px 20px 10px 10px;
+  position: relative;
 }
 .sidebar .head .userHead{
   width: 50px; 
@@ -202,5 +203,11 @@ a {
 }
 .sidebar .head .userHead img{
   border-radius: 50%;
+}
+.sidebar .head .myCard{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  text-align: center;
 }
 </style>
