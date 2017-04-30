@@ -45,7 +45,7 @@
     }
   }
 </script>
-<style lang="stylus">
+<style lang="stylus" scoped>
   .user-head{
     position fixed;
     height 40px;
