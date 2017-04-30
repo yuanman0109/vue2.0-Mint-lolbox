@@ -5,7 +5,7 @@
     </transition>
     <div class="sidebar" id="sidebar">
       <div class="slide-bg"></div>
-        <div class="sidebar-content">
+      <div class="sidebar-content">
         <div class="head">
           <div class="userHead">
               <img src="./assets/headimg.png" alt="username">
@@ -48,15 +48,17 @@
   name: 'app',
   data () {
     return {
-      isloading:true,
+      isloading:true
     }
   },
   watch:{
-    slideShow:function(n,o){
-      //判断下n和o的值，否则会执行俩次
-      if(n && n!=o){
-        this.slideout.open();
-      }
+    slideShow:{
+      handler:function(n,o){
+        if(n.isShow && n.type=='btn'){
+          this.slideout.open();
+        }
+      },
+      deep: true
     }
   },
   computed:{
@@ -77,18 +79,20 @@
         'tolerance': 70
       });
       this.slideout.on('close', function() { 
-        _this.setSlide(false);
+        _this.setSlide({isShow:false,type:'slide'});
       });
       this.slideout.on('open', function() { 
-        console.log(1)
-        _this.setSlide(true);
+        if(!_this.slideShow.isShow){
+          _this.setSlide({isShow:true,type:'slide'});
+          console.log("111")
+        }
       });
       
     })
   },
   methods:{
     ...mapMutations([
-      'setSlide' // 映射 this.increment() 为 this.$store.commit('increment')
+      'setSlide' 
     ])
   },
   components:{
@@ -111,6 +115,7 @@
   }
   *{
     box-sizing: border-box;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
   }
   p,h1, h2 {
     margin: 0;

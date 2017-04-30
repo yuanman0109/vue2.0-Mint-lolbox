@@ -5,21 +5,16 @@
       <div class="page-wrap">
         <mt-tab-container class="page-tabbar-container" v-model="selected">
           <mt-tab-container-item id="news">
-            <News></News>
+            <News @slider="currentSlide"></News>
           </mt-tab-container-item>
-          <mt-tab-container-item id="friends">
-            <mt-cell v-for="(n,i) in 5" key="i" :title="'订单 ' + n" />
+          <mt-tab-container-item id="friends" class="friend-wrapper">
+            <Friends></Friends>
           </mt-tab-container-item>
           <mt-tab-container-item id="find">
             <mt-cell v-for="(n,i) in 7" key="i" :title="'发现 ' + n" />
           </mt-tab-container-item>
           <mt-tab-container-item id="me">
-            <div class="page-part">
-              <mt-cell v-for="(n,i) in 12" key="i" :title="'我的 ' + n" />
-            </div>
-            <router-link to="/">
-              <mt-button type="danger" size="large">退出</mt-button>
-            </router-link>
+            <user></user>
           </mt-tab-container-item>
         </mt-tab-container>
       </div>
@@ -48,6 +43,8 @@
 
 <script>
 import News from './news.vue'
+import Friends from './friends.vue'
+import user from './userCenter.vue'
 import l_head from '../components/head.vue'
 export default {
   name: 'home',
@@ -55,12 +52,17 @@ export default {
     return {
       selected: 'news',
       styles:{
-        background:''
+        backgroundImage:'none'
       }
     }
   },
+  methods:{
+    currentSlide:function(slide){
+      this.styles.backgroundImage=slide.banner ? 'url('+slide.banner+')' : 'none';
+    }
+  },
   components:{
-    News,l_head
+    News,l_head,Friends,user
   }
 }
 </script>
@@ -80,5 +82,7 @@ export default {
   .mint-tab-item-icon > i{
     font-size: 24px;
   }
-  
+  .friend-wrapper{
+    padding-top:40px;
+  }
 </style>

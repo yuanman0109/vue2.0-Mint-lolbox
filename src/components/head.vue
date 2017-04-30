@@ -1,7 +1,9 @@
 <template>
-  <div class="header" :class="{'search-wrapper':tab=='news','friend-wrapper':tab=='friends','find-wrapper':tab=='find','user-wrapper':tab=='me'}" :style="styleObject">
-    <userHead class="pull-left"></userHead>
-    <div class="pull-right">
+  <div class="header" :class="{'header-news':styles.backgroundImage!='none','header-friend':tab=='friends'}">
+    <div class="header-bg" :class="{'search-wrapper':tab=='news','friend-wrapper':tab=='friends','find-wrapper':tab=='find','user-wrapper':tab=='me'}" :style="styles"></div>
+    <userHead></userHead>
+    <p v-if="tab=='find'">发现</p>
+    <div class="head-icon">
       <i class="iconfont" :class="{'icon-sousuo':tab=='news','icon-jiahao':tab=='friends','icon-iconfont':tab=='find','icon-fenxiang':tab=='me'}"></i>
     </div>
   </div>
@@ -11,7 +13,10 @@
   export default {
     props:{
       tab:{
-        type:String,
+        type:String
+      },
+      styles:{
+        type:Object
       }
     },
     data(){
@@ -39,7 +44,10 @@
     height: 40px;
     z-index: 1000;
     padding: 5px;
-    background: rgba(0, 0, 0, 0.5)
+    overflow: hidden;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
   }
   .userHead{
     width: 30px;
@@ -53,20 +61,34 @@
     max-width: 100%;
     border-radius: 50%;
   }
-  /*.search-wrapper{
-    width: 30px;
-    height: 30px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    text-align: center;
-    line-height: 30px;
-  }*/
-  .header .pull-right i{
+  .header-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .header-news{
+    background:#000;
+  }
+  .header-friend {
+    background:url('../assets/header.png') no-repeat center;
+    background-size:cover;
+  }
+  .search-wrapper{
+    filter:blur(15px);
+    -webkit-filter:blur(15px);
+  }
+  .header .head-icon i{
     color: #d3bf8d;
     display: block;
     font-size: 26px
   }
-  /*.header .pull-right .search-wrapper i{
-     font-size: 16px 
-  }*/
+  .header p{
+    color: #d3bf8d;
+  }
 </style>

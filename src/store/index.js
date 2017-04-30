@@ -7,11 +7,15 @@ const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   state:{
-    slideout:false
+    slideout:{
+      isShow:false,
+      type:'slide'
+    }
   },
   mutations:{
-    setSlide(state,isShow){
-      state.slideout=isShow;
+    setSlide(state,obj){
+      state.slideout.isShow=obj.isShow;
+      state.slideout.type=obj.type;
     }
   },
   strict: debug

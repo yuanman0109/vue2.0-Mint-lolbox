@@ -8,7 +8,10 @@
     name:'userHead',
     methods:{
       userBt(){
-        this.$store.commit('setSlide',true);
+        this.$store.commit('setSlide',{
+          isShow:true,
+          type:'btn'
+        });
       }
     }
   }
