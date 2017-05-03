@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="user-wrapper">
     <div class="user-head">
       <div class="area-control">
         <label @click="popupVisible=true"><span>{{currentArea}}</span><i class="iconfont icon-iconxl"></i></label>
@@ -11,7 +11,7 @@
       class="area-wrapper"
       data-slideout-ignore
       >
-        <mt-picker :slots="slots" :showToolbar="true" :visibleItemCount="3" :itemHeight="50" @change="onValuesChange" class="picker-wrapper">
+        <mt-picker :slots="slots" :showToolbar="true" :visibleItemCount="3" :itemHeight="50" @change="onValuesChange" >
           <mt-header>
             <mt-button slot="left" @click.native="popupVisible=false">取消</mt-button>
             <mt-button slot="right" @click.native="confirm">确定</mt-button>
@@ -45,47 +45,50 @@
     }
   }
 </script>
-<style lang="stylus" scoped>
-  .user-head{
-    position fixed;
-    height 40px;
-    left 40px;
-    right 40px;
-    z-index 1001;
-  }
-  .area-control{
-    color #d3bf8d;
-    height 100%;
-    display flex
-    justify-content:center;
-    align-items:center;
-    label{
-      padding 5px
-      span{
-        vertical-align middle
-        display inline-block
-        font-size 14px;
-      }
-      i{
-        display inline-block
-        margin-left 5px
-        vertical-align middle
-        margin-top -2px
-      }
+<style lang="stylus">
+  .user-wrapper{
+    overflow hidden
+    .user-head{
+      position fixed;
+      height 40px;
+      left 40px;
+      right 40px;
+      z-index 1001;
     }
-    
-  }
-  .area-wrapper{
-    width:100%;
-  }
-  .picker-list{
-    width:100%;
-  }
-  .mint-header{
-    background: url('../assets/header.png') no-repeat center;
-    background-size: cover;
-  }
-  .mint-header .mint-button{
-    color #d3bf8d
+    .area-control{
+      color #d3bf8d;
+      height 100%;
+      display flex
+      justify-content:center;
+      align-items:center;
+      label{
+        padding 5px
+        span{
+          vertical-align middle
+          display inline-block
+          font-size 14px;
+        }
+        i{
+          display inline-block
+          margin-left 5px
+          vertical-align middle
+          margin-top -2px
+        }
+      }
+      
+    }
+    .area-wrapper{
+      width:100%;
+    }
+    .picker-list{
+      width:100%;
+    }
+    .mint-header{
+      background: url('../assets/header.png') no-repeat center;
+      background-size: cover;
+    }
+    .mint-header .mint-button{
+      color #d3bf8d
+    }
   }
 </style>
